@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qcome"]
 [ext_resource type="Texture2D" uid="uid://owi82bfkhkgf" path="res://Textures/696.jpg" id="1_v0ito"]
-[ext_resource type="PackedScene" uid="uid://485p6blfs2ap" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
-[ext_resource type="PackedScene" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
-[ext_resource type="PackedScene" uid="uid://c5hhpmc0l8df" path="res://Scenes/coffin.tscn" id="5_41sct"]
-[ext_resource type="PackedScene" uid="uid://cdjsfijvhxb7r" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
-[ext_resource type="PackedScene" uid="uid://dtuxj16igtv4f" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
-[ext_resource type="PackedScene" uid="uid://8ehlwa3wisry" path="res://Scenes/character_zombie.tscn" id="8_lgelh"]
+[ext_resource type="PackedScene" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
+[ext_resource type="PackedScene" uid="uid://b1lfopxwmrdot" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
+[ext_resource type="PackedScene" path="res://Scenes/coffin.tscn" id="5_41sct"]
+[ext_resource type="PackedScene" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
+[ext_resource type="PackedScene" uid="uid://yejwnvmv0qxj" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
+[ext_resource type="PackedScene" path="res://Scenes/character_zombie.tscn" id="8_lgelh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iity4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,7 +50,7 @@ use_collision = true
 size = Vector3(39, 0.001, 40)
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02339, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59311, -1.02339, 1.35631)
 floor_max_angle = 1.0472
 script = ExtResource("1_qcome")
 
@@ -66,9 +66,6 @@ shape = SubResource("ConvexPolygonShape3D_n7tde")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50588, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
-
-[node name="crypt-large2" parent="." instance=ExtResource("4_qowa4")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.47834, -1.33648, -11.9077)
 
 [node name="column-large2" parent="." instance=ExtResource("4_ik5v4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24043, -1.33648, -5.67634)
@@ -96,3 +93,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, -1.44839, -13)
 
 [node name="character-zombie2" parent="." instance=ExtResource("8_lgelh")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.14818, -1.33648, -5.41508)
+
+[node name="crypt-large2" parent="." instance=ExtResource("4_qowa4")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.62844, -1.44839, -12.9652)
