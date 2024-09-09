@@ -3,8 +3,8 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 502.0
-offset_top = 270.0
-offset_right = 603.0
-offset_bottom = 296.0
+offset_left = 501.0
+offset_top = 184.0
+offset_right = 602.0
+offset_bottom = 210.0
 text = "BELLAAAAAA"
