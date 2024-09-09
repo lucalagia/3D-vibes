@@ -1,0 +1,119 @@
+[gd_scene load_steps=23 format=3 uid="uid://wrey8cncmnox"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_qcome"]
+[ext_resource type="Texture2D" uid="uid://owi82bfkhkgf" path="res://Textures/696.jpg" id="1_v0ito"]
+[ext_resource type="PackedScene" uid="uid://bt01dbijbm0uj" path="res://Scenes/crypt.tscn" id="3_6nipg"]
+[ext_resource type="PackedScene" uid="uid://rnge6i76ctl3" path="res://Scenes/road.tscn" id="4_cmi7l"]
+[ext_resource type="PackedScene" uid="uid://dxq3i2y3qharq" path="res://Models/graveyard-kit/cross.glb" id="5_fn1xq"]
+[ext_resource type="PackedScene" uid="uid://bbkh7kt6ygrao" path="res://Models/graveyard-kit/debris-wood.glb" id="6_goyuw"]
+[ext_resource type="PackedScene" uid="uid://dop5f70bnog5j" path="res://Models/graveyard-kit/debris.glb" id="7_46ipf"]
+[ext_resource type="PackedScene" uid="uid://x1d57j443iwq" path="res://Models/graveyard-kit/fence-damaged.glb" id="8_hh1yq"]
+[ext_resource type="PackedScene" uid="uid://dxbeqjb418jnw" path="res://Models/graveyard-kit/fence-gate.glb" id="9_16tkb"]
+[ext_resource type="PackedScene" uid="uid://cysnhexy0est8" path="res://Models/graveyard-kit/fence.glb" id="10_bs01a"]
+[ext_resource type="PackedScene" uid="uid://cei2wqousers2" path="res://Models/graveyard-kit/grave-border.glb" id="11_n110e"]
+[ext_resource type="PackedScene" uid="uid://bl8qvsrq6mv3o" path="res://Models/graveyard-kit/grave.glb" id="12_hmy4n"]
+[ext_resource type="PackedScene" uid="uid://oqewrj1ks27b" path="res://Models/graveyard-kit/gravestone-bevel.glb" id="13_4wwj2"]
+[ext_resource type="PackedScene" uid="uid://ye6sosw8rulp" path="res://Models/graveyard-kit/gravestone-broken.glb" id="14_e3bxw"]
+[ext_resource type="PackedScene" uid="uid://bi50rv86uqtsx" path="res://Models/graveyard-kit/hay-bale-bundled.glb" id="15_8xvc6"]
+[ext_resource type="PackedScene" uid="uid://8n8mw3qutdi3" path="res://Models/graveyard-kit/lightpost-all.glb" id="16_n75ie"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iity4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_u23s6"]
+sky_material = SubResource("ProceduralSkyMaterial_iity4")
+
+[sub_resource type="Environment" id="Environment_4rirb"]
+background_mode = 2
+sky = SubResource("Sky_u23s6")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnreh"]
+albedo_texture = ExtResource("1_v0ito")
+subsurf_scatter_strength = 1.0
+uv1_scale = Vector3(6, 6, 6)
+uv1_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t6vbb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n7tde"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.892996, 0.389767, -0.225031, 0.320143, 0.90154, 0.291091, 0.316332, 0.187901, -0.929853, 9.94614, 9.03936, -24.1519)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4rirb")
+
+[node name="ground" type="CSGBox3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, -1.34398, 0)
+material_override = SubResource("StandardMaterial3D_hnreh")
+use_collision = true
+size = Vector3(39, 0.001, 40)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+floor_max_angle = 1.0472
+script = ExtResource("1_qcome")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310832, 0.9009, 0.082694)
+mesh = SubResource("CapsuleMesh_t6vbb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310832, 0.9009, 0.082694)
+shape = SubResource("ConvexPolygonShape3D_n7tde")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50588, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+
+[node name="crypt" parent="." instance=ExtResource("3_6nipg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.24909, -1.33648, 10.5539)
+
+[node name="robe (da eliminare)" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.24909, -1.33648, 10.5539)
+
+[node name="road2" parent="robe (da eliminare)" instance=ExtResource("4_cmi7l")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0107138, 0.036237, 8.01198)
+
+[node name="cross2" parent="robe (da eliminare)" instance=ExtResource("5_fn1xq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.92879, 3.57628e-07, 5.30427)
+
+[node name="debris-wood2" parent="robe (da eliminare)" instance=ExtResource("6_goyuw")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.31657, 0, 10.27)
+
+[node name="debris2" parent="robe (da eliminare)" instance=ExtResource("7_46ipf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7.09719, 0, 2.8098)
+
+[node name="fence-damaged2" parent="robe (da eliminare)" instance=ExtResource("8_hh1yq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.99952, 0, 6.1044)
+
+[node name="fence-gate2" parent="robe (da eliminare)" instance=ExtResource("9_16tkb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.0007, 0, 6.17151)
+
+[node name="fence2" parent="robe (da eliminare)" instance=ExtResource("10_bs01a")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12.0037, 0, 6.16153)
+
+[node name="grave-border2" parent="robe (da eliminare)" instance=ExtResource("11_n110e")]
+transform = Transform3D(-0.0641142, 0, 0.997943, 0, 1, 0, -0.997943, 0, -0.0641142, -4.9309, -4.76837e-07, 12.1249)
+
+[node name="grave2" parent="robe (da eliminare)" instance=ExtResource("12_hmy4n")]
+transform = Transform3D(-0.163532, 0, 0.986538, 0, 1, 0, -0.986538, 0, -0.163532, -4.77147, 0, 12.9227)
+
+[node name="gravestone-bevel2" parent="robe (da eliminare)" instance=ExtResource("13_4wwj2")]
+transform = Transform3D(-0.0115537, 0, 0.999933, 0, 1, 0, -0.999933, 0, -0.0115537, -5.92759, 0.0471668, 12.2961)
+
+[node name="gravestone-broken2" parent="robe (da eliminare)" instance=ExtResource("14_e3bxw")]
+transform = Transform3D(-0.0258977, 0, 0.999665, 0, 1, 0, -0.999665, 0, -0.0258977, -5.79558, -4.76837e-07, 13.0575)
+
+[node name="hay-bale-bundled2" parent="robe (da eliminare)" instance=ExtResource("15_8xvc6")]
+transform = Transform3D(-0.65084, 0, 0.759215, 0, 1, 0, -0.759215, 0, -0.65084, -7.32686, 0.829618, 9.2485)
+
+[node name="lightpost-all2" parent="robe (da eliminare)" instance=ExtResource("16_n75ie")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 5.63456, -0.0909305, 6.64505)
