@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://wrey8cncmnox"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 501.0
+offset_top = 184.0
+offset_right = 602.0
+offset_bottom = 210.0
+text = "BELLAAAAAA"
