@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=8 format=4 uid="uid://cpst68kshx2dk"]
-=======
 [gd_scene load_steps=8 format=4 uid="uid://c5hhpmc0l8df"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://d2edf67dkmi5n" path="res://Models/graveyard-kit/Textures/colormap.png" id="1_c25rm"]
 

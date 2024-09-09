@@ -2,21 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qcome"]
 [ext_resource type="Texture2D" uid="uid://owi82bfkhkgf" path="res://Textures/696.jpg" id="1_v0ito"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://cjk21f8yof8qs" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
-[ext_resource type="PackedScene" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
-[ext_resource type="PackedScene" uid="uid://cpst68kshx2dk" path="res://Scenes/coffin.tscn" id="5_41sct"]
-[ext_resource type="PackedScene" uid="uid://dg8vhti77njja" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
-[ext_resource type="PackedScene" uid="uid://bqf1fd2qq5gmn" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
-[ext_resource type="PackedScene" uid="uid://bgi8ka51cml0s" path="res://Scenes/character_zombie.tscn" id="8_lgelh"]
-=======
 [ext_resource type="PackedScene" uid="uid://485p6blfs2ap" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
 [ext_resource type="PackedScene" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
 [ext_resource type="PackedScene" uid="uid://c5hhpmc0l8df" path="res://Scenes/coffin.tscn" id="5_41sct"]
 [ext_resource type="PackedScene" uid="uid://cdjsfijvhxb7r" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
 [ext_resource type="PackedScene" uid="uid://dtuxj16igtv4f" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
 [ext_resource type="PackedScene" uid="uid://8ehlwa3wisry" path="res://Scenes/character_zombie.tscn" id="8_lgelh"]
->>>>>>> Stashed changes
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iity4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
