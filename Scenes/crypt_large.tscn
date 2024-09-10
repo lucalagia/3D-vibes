@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b1lfopxwmrdot"]
+[gd_scene load_steps=8 format=4 uid="uid://bjra4x2r6u4ai"]
 
 [ext_resource type="Texture2D" uid="uid://d2edf67dkmi5n" path="res://Models/graveyard-kit/Textures/colormap.png" id="1_hbupt"]
 [ext_resource type="PackedScene" uid="uid://c5aj6i7iskvsu" path="res://Models/graveyard-kit/crypt-large-roof.glb" id="2_8w1fd"]

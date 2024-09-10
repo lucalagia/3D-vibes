@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://wrey8cncmnox"]
+[gd_scene load_steps=18 format=3 uid="uid://wrey8cncmnox"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qcome"]
 [ext_resource type="Texture2D" uid="uid://owi82bfkhkgf" path="res://Textures/696.jpg" id="1_v0ito"]
 [ext_resource type="PackedScene" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
-[ext_resource type="PackedScene" uid="uid://b1lfopxwmrdot" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
+[ext_resource type="PackedScene" uid="uid://bjra4x2r6u4ai" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
 [ext_resource type="PackedScene" path="res://Scenes/coffin.tscn" id="5_41sct"]
 [ext_resource type="PackedScene" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
-[ext_resource type="PackedScene" uid="uid://yejwnvmv0qxj" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
+[ext_resource type="PackedScene" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
 [ext_resource type="PackedScene" path="res://Scenes/character_zombie.tscn" id="8_lgelh"]
+[ext_resource type="Shader" path="res://Scenes/main.gdshader" id="9_44a3i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iity4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,66 +34,104 @@ uv1_triplanar = true
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n7tde"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_raogo"]
+render_priority = 0
+shader = ExtResource("9_44a3i")
+shader_parameter/depth_threshold = 0.05
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.6
+shader_parameter/darken_amount = 0.3
+shader_parameter/lighten_amount = 1.3
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_gku2t"]
+material = SubResource("ShaderMaterial_raogo")
+flip_faces = true
+size = Vector2(2, 2)
+
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44839, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.892996, 0.389767, -0.225031, -0.388413, -0.414835, 0.822829, 0.227361, 0.822188, 0.521836, 8.94614, 7.03936, 11.8481)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(288, 162)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.892996, 0.389767, -0.225031, -0.388413, -0.414835, 0.822829, 0.227361, 0.822188, 0.521837, 8.94614, 8.48775, 11.8481)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_4rirb")
 
-[node name="ground" type="CSGBox3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, -1.34398, 0)
+[node name="ground" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.10441, 0)
 material_override = SubResource("StandardMaterial3D_hnreh")
 use_collision = true
 size = Vector3(39, 0.001, 40)
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59311, -1.02339, 1.35631)
+[node name="Robe" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44839, 0)
+
+[node name="column-large2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24043, -1.33648, -5.67634)
+
+[node name="column-large3" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31851, -1.33648, -3.96984)
+
+[node name="column-large4" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.664692, -1.33648, -5.32086)
+
+[node name="column-large5" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14057, -1.33648, -3.10154)
+
+[node name="coffin2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("5_41sct")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -1.30081, -12)
+
+[node name="coffin-old2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("6_sp41r")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 5, -1.31472, -8)
+
+[node name="coffin3" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("5_41sct")]
+transform = Transform3D(1.73205, 0, 1, 0, 2, 0, -1, 0, 1.73205, -8, -1.34491, -11)
+
+[node name="bench-damaged3" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("7_mhpj2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, -1.44839, -13)
+
+[node name="character-zombie2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("8_lgelh")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.14818, -1.33648, -5.41508)
+
+[node name="crypt-large2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_qowa4")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.62844, -1.44839, -12.9652)
+
+[node name="Player" type="CharacterBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59311, 0.425, 1.35631)
 floor_max_angle = 1.0472
 script = ExtResource("1_qcome")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310832, 0.9009, 0.082694)
 mesh = SubResource("CapsuleMesh_t6vbb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310832, 0.9009, 0.082694)
 shape = SubResource("ConvexPolygonShape3D_n7tde")
 
-[node name="Head" type="Node3D" parent="Player"]
+[node name="Head" type="Node3D" parent="SubViewportContainer/SubViewport/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50588, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Player/Head"]
 
-[node name="column-large2" parent="." instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24043, -1.33648, -5.67634)
-
-[node name="column-large3" parent="." instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31851, -1.33648, -3.96984)
-
-[node name="column-large4" parent="." instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.664692, -1.33648, -5.32086)
-
-[node name="column-large5" parent="." instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14057, -1.33648, -3.10154)
-
-[node name="coffin2" parent="." instance=ExtResource("5_41sct")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -1.30081, -12)
-
-[node name="coffin-old2" parent="." instance=ExtResource("6_sp41r")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 5, -1.31472, -8)
-
-[node name="coffin3" parent="." instance=ExtResource("5_41sct")]
-transform = Transform3D(1.73205, 0, 1, 0, 2, 0, -1, 0, 1.73205, -8, -1.34491, -11)
-
-[node name="bench-damaged3" parent="." instance=ExtResource("7_mhpj2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, -1.44839, -13)
-
-[node name="character-zombie2" parent="." instance=ExtResource("8_lgelh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.14818, -1.33648, -5.41508)
-
-[node name="crypt-large2" parent="." instance=ExtResource("4_qowa4")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.62844, -1.44839, -12.9652)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Player/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59311, -1.93088, -1.35631)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_gku2t")
+skeleton = NodePath("../../../..")
