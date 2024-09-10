@@ -1,14 +1,23 @@
-[gd_scene load_steps=18 format=3 uid="uid://wrey8cncmnox"]
+[gd_scene load_steps=27 format=3 uid="uid://wrey8cncmnox"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qcome"]
 [ext_resource type="Texture2D" uid="uid://owi82bfkhkgf" path="res://Textures/696.jpg" id="1_v0ito"]
-[ext_resource type="PackedScene" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
+[ext_resource type="PackedScene" uid="uid://485p6blfs2ap" path="res://Scenes/column_large.tscn" id="4_ik5v4"]
 [ext_resource type="PackedScene" uid="uid://bjra4x2r6u4ai" path="res://Scenes/crypt_large.tscn" id="4_qowa4"]
-[ext_resource type="PackedScene" path="res://Scenes/coffin.tscn" id="5_41sct"]
-[ext_resource type="PackedScene" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
-[ext_resource type="PackedScene" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
-[ext_resource type="PackedScene" path="res://Scenes/character_zombie.tscn" id="8_lgelh"]
+[ext_resource type="PackedScene" uid="uid://c5hhpmc0l8df" path="res://Scenes/coffin.tscn" id="5_41sct"]
+[ext_resource type="PackedScene" uid="uid://cdjsfijvhxb7r" path="res://Scenes/coffin_old.tscn" id="6_sp41r"]
+[ext_resource type="PackedScene" uid="uid://yejwnvmv0qxj" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
+[ext_resource type="PackedScene" uid="uid://lbsklxnudca8" path="res://Scenes/bench.tscn" id="8_0qi5p"]
 [ext_resource type="Shader" path="res://Scenes/main.gdshader" id="9_44a3i"]
+[ext_resource type="PackedScene" uid="uid://bbkh7kt6ygrao" path="res://Models/graveyard-kit/debris-wood.glb" id="10_61jkr"]
+[ext_resource type="PackedScene" uid="uid://cjbemwce5bssu" path="res://Scenes/lightpost_double.tscn" id="11_y51s8"]
+[ext_resource type="PackedScene" uid="uid://cw4ukjh2vnk6m" path="res://Scenes/trunk.tscn" id="12_5mq6c"]
+[ext_resource type="PackedScene" uid="uid://bjv7olk53svk6" path="res://Scenes/trunk_long.tscn" id="13_gw8pc"]
+[ext_resource type="PackedScene" uid="uid://l2a456mws4gu" path="res://Scenes/iron_fence_border_gate.tscn" id="14_v7q4o"]
+[ext_resource type="PackedScene" uid="uid://7sfenuced21r" path="res://Scenes/iron_fence_border.tscn" id="15_3xxeo"]
+[ext_resource type="PackedScene" uid="uid://bt0mhwwisb6th" path="res://Scenes/iron_fence_border_curve.tscn" id="16_ptx05"]
+[ext_resource type="PackedScene" uid="uid://bllqri8wgo6e7" path="res://Scenes/iron_fence_border_column.tscn" id="17_fm6fx"]
+[ext_resource type="PackedScene" uid="uid://cmmdls805niq2" path="res://Scenes/border_pillar.tscn" id="18_1v8t3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iity4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -61,10 +70,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
-stretch_shrink = 4
+stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-size = Vector2i(288, 162)
+handle_input_locally = false
+size = Vector2i(384, 216)
+render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.892996, 0.389767, -0.225031, -0.388413, -0.414835, 0.822829, 0.227361, 0.822188, 0.521837, 8.94614, 8.48775, 11.8481)
@@ -82,35 +93,17 @@ size = Vector3(39, 0.001, 40)
 [node name="Robe" type="Node3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44839, 0)
 
-[node name="column-large2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24043, -1.33648, -5.67634)
-
-[node name="column-large3" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31851, -1.33648, -3.96984)
-
-[node name="column-large4" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.664692, -1.33648, -5.32086)
-
-[node name="column-large5" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_ik5v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14057, -1.33648, -3.10154)
-
 [node name="coffin2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("5_41sct")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, -1.30081, -12)
+transform = Transform3D(1.79828, 0, -0.87533, 0, 2, 0, 0.87533, 0, 1.79828, -4.83033, -1.30081, -13.0425)
 
 [node name="coffin-old2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("6_sp41r")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 5, -1.31472, -8)
 
-[node name="coffin3" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("5_41sct")]
-transform = Transform3D(1.73205, 0, 1, 0, 2, 0, -1, 0, 1.73205, -8, -1.34491, -11)
-
 [node name="bench-damaged3" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("7_mhpj2")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, -1.44839, -13)
-
-[node name="character-zombie2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("8_lgelh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.14818, -1.33648, -5.41508)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1, -1.44839, -11)
 
 [node name="crypt-large2" parent="SubViewportContainer/SubViewport/Robe" instance=ExtResource("4_qowa4")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.62844, -1.44839, -12.9652)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.62844, -1.44839, -12.9652)
 
 [node name="Player" type="CharacterBody3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59311, 0.425, 1.35631)
@@ -135,3 +128,129 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59311, -1.93088, -1.35631)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_gku2t")
 skeleton = NodePath("../../../..")
+
+[node name="bench2" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_0qi5p")]
+transform = Transform3D(0, 0, -2, 0, 2, 0, 2, 0, 0, -8, 0, -11)
+
+[node name="bench3" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_0qi5p")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -8, 0, -13)
+
+[node name="bench4" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_0qi5p")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -8, 0, -15)
+
+[node name="column-large2" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.44839, -8)
+
+[node name="column-large3" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.44839, -8)
+
+[node name="column-large4" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.44839, -7)
+
+[node name="column-large5" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.44839, -6)
+
+[node name="column-large6" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.44839, -7)
+
+[node name="column-large7" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.44839, -6)
+
+[node name="column-large9" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.44839, -5)
+
+[node name="column-large11" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.44839, 0)
+
+[node name="column-large13" parent="." instance=ExtResource("4_ik5v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.44839, -1)
+
+[node name="bench2" parent="." instance=ExtResource("8_0qi5p")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1, -1.44839, -13)
+
+[node name="bench3" parent="." instance=ExtResource("8_0qi5p")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1, -1.44839, -15)
+
+[node name="debris-wood2" parent="." instance=ExtResource("10_61jkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333435, -1.28535, -11.2155)
+
+[node name="lightpost-double2" parent="." instance=ExtResource("11_y51s8")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -7, -1.44839, -1.57236)
+
+[node name="lightpost-double3" parent="." instance=ExtResource("11_y51s8")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -7, -1.44839, -5)
+
+[node name="trunk2" parent="." instance=ExtResource("12_5mq6c")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, -1.44839, -9)
+
+[node name="trunk-long2" parent="." instance=ExtResource("13_gw8pc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, -1.44839, -14)
+
+[node name="trunk-long3" parent="." instance=ExtResource("13_gw8pc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -1.44839, -8)
+
+[node name="trunk-long4" parent="." instance=ExtResource("13_gw8pc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -1.44839, -21)
+
+[node name="trunk-long5" parent="." instance=ExtResource("13_gw8pc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12, -1.44839, -16)
+
+[node name="trunk3" parent="." instance=ExtResource("12_5mq6c")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, -1.44839, -17)
+
+[node name="trunk-long6" parent="." instance=ExtResource("13_gw8pc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7, -1.44839, -13)
+
+[node name="iron-fence-border-gate2" parent="." instance=ExtResource("14_v7q4o")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -14.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border2" parent="." instance=ExtResource("15_3xxeo")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -16.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border3" parent="." instance=ExtResource("15_3xxeo")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -12.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border4" parent="." instance=ExtResource("15_3xxeo")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -10.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border-curve2" parent="." instance=ExtResource("16_ptx05")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -8.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border-curve3" parent="." instance=ExtResource("16_ptx05")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -8.8707, -1.44839, -8.12927)
+
+[node name="iron-fence-border-curve4" parent="." instance=ExtResource("16_ptx05")]
+transform = Transform3D(-9.13912e-08, 0, 2, 0, 2, 0, -2, 0, -9.13912e-08, -20.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border5" parent="." instance=ExtResource("15_3xxeo")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -18.8707, -1.44839, -0.129274)
+
+[node name="iron-fence-border-curve5" parent="." instance=ExtResource("16_ptx05")]
+transform = Transform3D(2, 0, -8.74228e-08, 0, 2, 0, 8.74228e-08, 0, 2, -20.8707, -1.44839, -8.12927)
+
+[node name="iron-fence-border-column2" parent="." instance=ExtResource("17_fm6fx")]
+transform = Transform3D(2, 0, 3.49691e-07, 0, 2, 0, -3.49691e-07, 0, 2, -16.8707, -1.44839, -8.12927)
+
+[node name="iron-fence-border6" parent="." instance=ExtResource("15_3xxeo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.8707, -1.44839, -8.12927)
+
+[node name="iron-fence-border7" parent="." instance=ExtResource("15_3xxeo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.8707, -1.44839, -8.12927)
+
+[node name="iron-fence-border-column3" parent="." instance=ExtResource("17_fm6fx")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -12.8707, -1.44839, -9.9295)
+
+[node name="iron-fence-border-column4" parent="." instance=ExtResource("17_fm6fx")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -8.8707, -1.44839, -6.12927)
+
+[node name="iron-fence-border-column5" parent="." instance=ExtResource("17_fm6fx")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -20.8707, -1.44839, -2.12927)
+
+[node name="border-pillar2" parent="." instance=ExtResource("18_1v8t3")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -7.97163, -1.44839, -1.23289)
+
+[node name="border-pillar3" parent="." instance=ExtResource("18_1v8t3")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -21.7699, -1.33666, -7.02759)
+
+[node name="trunk4" parent="." instance=ExtResource("12_5mq6c")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, -1.44839, -1)
