@@ -1,6 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://cjbemwce5bssu"]
+[gd_scene load_steps=8 format=4 uid="uid://cjbemwce5bssu"]
 
 [ext_resource type="Texture2D" uid="uid://d2edf67dkmi5n" path="res://Models/graveyard-kit/Textures/colormap.png" id="1_26fv8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2glrh"]
+size = Vector3(0.1, 0.2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbwyj"]
+emission_enabled = true
+emission = Color(0.869228, 0.789393, 0.154696, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_by54c"]
 resource_name = "colormap"
@@ -47,6 +55,16 @@ points = PackedVector3Array(-0.0837659, -0.0104659, -0.0705582, 0.0836881, 1.203
 
 [node name="lightpost-double2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="luce" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.082, -0.237349)
+mesh = SubResource("BoxMesh_2glrh")
+surface_material_override/0 = SubResource("StandardMaterial3D_cbwyj")
+
+[node name="luce2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.082, 0.239239)
+mesh = SubResource("BoxMesh_2glrh")
+surface_material_override/0 = SubResource("StandardMaterial3D_cbwyj")
 
 [node name="lightpost-double" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_5uico")
