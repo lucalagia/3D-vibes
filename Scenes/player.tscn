@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8wtab4gloy6s"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_v3ht0"]
+[ext_resource type="Shader" path="res://Scenes/main.gdshader" id="2_8w8fj"]
+[ext_resource type="PackedScene" uid="uid://cjvehswsie6g5" path="res://Scenes/gun.tscn" id="3_v03h3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t6vbb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru58g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_raogo"]
+render_priority = 0
+shader = ExtResource("2_8w8fj")
+shader_parameter/depth_threshold = 0.05
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.6
+shader_parameter/darken_amount = 0.3
+shader_parameter/lighten_amount = 1.3
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_gku2t"]
+material = SubResource("ShaderMaterial_raogo")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -2.59311, 0.112992, 1.35631)
+script = ExtResource("1_v3ht0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310832, 0.9009, 0.082694)
+mesh = SubResource("CapsuleMesh_t6vbb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310832, 0.9009, 0.082694)
+shape = SubResource("CapsuleShape3D_ru58g")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342445, 1.54368, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.209644, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.512561)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_gku2t")
+skeleton = NodePath("../../../..")
+
+[node name="gun" parent="Head/Camera3D" instance=ExtResource("3_v03h3")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.384437, -0.494506, -0.510243)

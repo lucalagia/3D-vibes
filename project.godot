@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
+[debug]
+
+shapes/collision/shape_color=Color(0.701961, 0.00478793, 0, 1)
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bb50y52jxbyw5"
-path="res://.godot/imported/crypt.glb-4afcd5958af93feb2278fc7c40d8433c.scn"
+uid="uid://dbtr8qo85nu31"
+path="res://.godot/imported/Pistol.glb-48c755ee8cf783b82a3f0597fd7c0d13.scn"
 
 [deps]
 
-source_file="res://Models/crypt/crypt.glb"
-dest_files=["res://.godot/imported/crypt.glb-4afcd5958af93feb2278fc7c40d8433c.scn"]
+source_file="res://Models/Guns/Pistol.glb"
+dest_files=["res://.godot/imported/Pistol.glb-48c755ee8cf783b82a3f0597fd7c0d13.scn"]
 
 [params]
 

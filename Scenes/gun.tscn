@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjvehswsie6g5"]
+
+[ext_resource type="PackedScene" uid="uid://dbtr8qo85nu31" path="res://Models/Guns/Pistol.glb" id="1_rsvvh"]
+
+[sub_resource type="Animation" id="Animation_83hou"]
+resource_name = "Shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.000162991, 0.0101342, 0.0998467),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.2), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r136n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tei4n"]
+_data = {
+"RESET": SubResource("Animation_r136n"),
+"Shoot": SubResource("Animation_83hou")
+}
+
+[node name="Root Scene" instance=ExtResource("1_rsvvh")]
+
+[node name="Pistol_5" parent="RootNode" index="0"]
+transform = Transform3D(-4.37114e-06, -88.882, -4.37114e-06, 0, -3.88515e-06, 100, -100, 3.88515e-06, 1.91069e-13, 0, 0, 0)
+cast_shadow = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RootNode" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_tei4n")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="RootNode" index="2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.544102, -1.46093)
+target_position = Vector3(0, 0, -1)
