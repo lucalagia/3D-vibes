@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://wrey8cncmnox"]
+[gd_scene load_steps=41 format=4 uid="uid://wrey8cncmnox"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_lfc7u"]
 [ext_resource type="Texture2D" uid="uid://owi82bfkhkgf" path="res://Textures/696.jpg" id="1_v0ito"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://yejwnvmv0qxj" path="res://Scenes/bench_damaged.tscn" id="7_mhpj2"]
 [ext_resource type="PackedScene" uid="uid://lbsklxnudca8" path="res://Scenes/bench.tscn" id="8_0qi5p"]
 [ext_resource type="PackedScene" uid="uid://iliksv7itd7" path="res://Scenes/pine.tscn" id="9_3s14m"]
-[ext_resource type="PackedScene" uid="uid://bbkh7kt6ygrao" path="res://Models/graveyard-kit/debris-wood.glb" id="10_61jkr"]
 [ext_resource type="PackedScene" uid="uid://crq5nh3gnhw0f" path="res://Scenes/pine_crooked.tscn" id="10_72x8o"]
 [ext_resource type="PackedScene" uid="uid://cjbemwce5bssu" path="res://Scenes/lightpost_double.tscn" id="11_y51s8"]
 [ext_resource type="PackedScene" uid="uid://cw4ukjh2vnk6m" path="res://Scenes/trunk.tscn" id="12_5mq6c"]
@@ -266,9 +265,6 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1, -1
 [node name="bench6" parent="Map/NavigationRegion3D/Decorazioni con collisione" instance=ExtResource("8_0qi5p")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1, -1.44839, -15)
 
-[node name="debris-wood2" parent="Map/NavigationRegion3D/Decorazioni con collisione" instance=ExtResource("10_61jkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333435, -1.28535, -11.2155)
-
 [node name="lightpost-double2" parent="Map/NavigationRegion3D/Decorazioni con collisione" instance=ExtResource("11_y51s8")]
 transform = Transform3D(-1.9997, 0, -0.0343812, 0, 2, 0, 0.0343812, 0, -1.9997, -19.7211, -1.44839, -3.30859)
 
@@ -396,6 +392,8 @@ transform = Transform3D(-0.0253414, 0, -1.99984, 0, 2, 0, 1.99984, 0, -0.0253414
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -21.8574, -1.39957, -1.88716)
 material_override = SubResource("StandardMaterial3D_hnreh")
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(39, 0.001, 40)
 
 [node name="Spawns" type="Node3D" parent="Map"]
@@ -433,10 +431,11 @@ offset_left = -26.0
 offset_top = -17.0
 offset_right = 1181.0
 offset_bottom = 674.0
-color = Color(1, 0.054902, 0, 0.482353)
+color = Color(1, 0.054902, 0, 0.552941)
 
 [node name="Spawntimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
+[connection signal="player_hit" from="Map/SubViewportContainer/SubViewport/Player" to="." method="_on_player_player_hit"]
 [connection signal="timeout" from="Spawntimer" to="." method="_on_spawntimer_timeout"]
