@@ -47,6 +47,8 @@ points = PackedVector3Array(-0.192528, 0.000756793, -0.0748, -0.137056, 0.35901,
 
 [node name="gravestone-broken2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="gravestone-broken" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_1xpkg")

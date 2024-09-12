@@ -45,6 +45,8 @@ points = PackedVector3Array(-0.295584, 0.0089982, 0.143746, 0.297368, 0.0269594,
 
 [node name="grave2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="grave" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_maujj")

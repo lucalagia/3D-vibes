@@ -47,6 +47,8 @@ points = PackedVector3Array(-0.252418, -0.0096746, -0.444986, 0.270003, -0.00967
 
 [node name="grave-border2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="grave-border" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_wgcfi")

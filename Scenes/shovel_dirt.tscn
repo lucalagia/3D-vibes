@@ -45,6 +45,8 @@ points = PackedVector3Array(-0.15716, 0.575614, -0.105427, -0.15716, 0.575614, -
 
 [node name="shovel-dirt2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="shovel-dirt" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_284qj")

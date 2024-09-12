@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 var player = null
 var state_machine
+var health = 6
 
 const SPEED = 1
 const ATTACK_RANGE = 1.5
@@ -42,3 +43,11 @@ func _hit_finished():
 	if _target_in_range(1.0):
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir)
+
+
+func _on_area_3d_body_part_hit(dam: Variant) -> void:
+	health -= dam
+	if health <= 0:
+		anim_tree.set("parameters/conditions/die", true)
+		await get_tree().create_timer(4.0).timeout
+		queue_free()

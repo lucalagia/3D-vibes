@@ -45,6 +45,8 @@ points = PackedVector3Array(0.479105, 0.809459, -0.4, 0.507937, 0.833333, -0.507
 
 [node name="iron-fence-border-column2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="iron-fence-border-column" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_pdyq2")

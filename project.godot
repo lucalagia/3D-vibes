@@ -21,7 +21,7 @@ SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
 [debug]
 
-shapes/collision/shape_color=Color(0.701961, 0.00478793, 0, 1)
+shapes/collision/shape_color=Color(0, 0.6, 0.701961, 1)
 
 [editor_plugins]
 

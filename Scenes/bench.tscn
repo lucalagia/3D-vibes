@@ -45,6 +45,8 @@ points = PackedVector3Array(0.384675, 0.548955, -0.143034, 0.384675, 0.3194, 0.1
 
 [node name="bench2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="bench" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_2hws1")

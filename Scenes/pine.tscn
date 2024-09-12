@@ -45,6 +45,8 @@ points = PackedVector3Array(-0.607173, 0.418093, -0.0311306, 0.0470128, 0.309027
 
 [node name="pine2" type="StaticBody3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="pine" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_5j5ar")

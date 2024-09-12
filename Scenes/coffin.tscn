@@ -80,6 +80,8 @@ points = PackedVector3Array(-0.259073, 0.370628, -0.87873, -0.276507, 0.63385, 0
 
 [node name="coffin2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="coffin" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_kamno")
