@@ -11,6 +11,7 @@ const HIT_STAGGER = 8.0
 # bullets
 var bullet = load("res://Scenes/bullet.tscn")
 var instance
+@onready var right_gun = true
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -88,6 +89,7 @@ func _physics_process(delta: float) -> void:
 			instance.position = gun_barrel.global_position
 			instance.transform.basis = gun_barrel.global_transform.basis
 			get_parent().add_child(instance)
+			
 	
 	move_and_slide()
 
